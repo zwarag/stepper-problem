@@ -1,0 +1,14 @@
+<mat-stepper (selectionChange)="onStepChange($event)">
+  <mat-step>
+    <ng-template matStepLabel>Step 1</ng-template>
+    <router-outlet></router-outlet>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Step 2</ng-template>
+    <router-outlet></router-outlet>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Step 3</ng-template>
+    <router-outlet></router-outlet>
+  </mat-step>
+</mat-stepper>
