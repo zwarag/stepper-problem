@@ -1,14 +1,14 @@
 <mat-stepper (selectionChange)="onStepChange($event)">
   <mat-step>
     <ng-template matStepLabel>Step 1</ng-template>
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="stepper.selectedIndex === 0"></router-outlet>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Step 2</ng-template>
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="stepper.selectedIndex === 1"></router-outlet>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Step 3</ng-template>
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="stepper.selectedIndex === 2"></router-outlet>
   </mat-step>
 </mat-stepper>

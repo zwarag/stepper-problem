@@ -1,5 +1,5 @@
 import { StepperSelectionEvent } from "@angular/cdk/stepper";
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, ViewChild } from '@angular/core';
 import { MatStepper } from "@angular/material/stepper";
 import { ActivatedRoute, Router } from "@angular/router";
 
@@ -8,14 +8,9 @@ import { ActivatedRoute, Router } from "@angular/router";
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent implements AfterViewInit {
 
-  @ViewChild('stepper',
-    {
-      static: true,
-      read: MatStepper
-    }
-  ) stepper!: MatStepper;
+  @ViewChild('stepper') stepper!: MatStepper;
 
   route = inject(ActivatedRoute)
   router = inject(Router)
@@ -25,9 +20,9 @@ export class StepperComponent implements OnInit {
     await this.router.navigate(['steps', stepRoute]);
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     const stepMap = {'step1': 0, 'step2': 1, 'step3': 2};
     const currentStep = this.route.firstChild?.snapshot.url[0].path as keyof typeof stepMap;
-    this.stepper.selectedIndex = stepMap[currentStep] ?? 0;
+    this.stepper!.selectedIndex = stepMap[currentStep] ?? 0;
   }
 }
